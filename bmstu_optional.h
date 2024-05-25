@@ -72,7 +72,7 @@ class optional {
     return *this;
   }
 
-  optional &operator=(const value_type &&val) { // optional = std::vector {1,2,3,45}
+  optional &operator=(value_type &&val) { // optional = std::vector {1,2,3,45}
     if (is_initialized_) {
       value() = std::move(val);
     } else {
@@ -99,7 +99,7 @@ class optional {
     return *this;
   }
 
-  optional &operator=(const optional &&other) { // optional = std::vector {1,2,3,4};
+  optional &operator=(optional &&other) { // optional = std::vector {1,2,3,4};
     if (is_initialized_ && other.is_initialized_) {
       value() = std::move(other.value());
     } else if (!is_initialized_ && other.is_initialized_) {
